@@ -1,0 +1,41 @@
+En la internet deberá buscar al menos 20 pangramas; que no es más que una frase que contiene todas las letras del alfabeto por lo menos una vez, 
+como “El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el saxofón detrás del palenque de paja”; los cuales deberán ser colocados en un archivo de texto plano. 
+
+
+public class GeneradorPangrama {
+    public static void main(String[] args) {
+        // Define 20 pangramas
+        String[] pangramas = {
+            "El veloz murciélago hindú comía feliz cardillo y kiwi. La cigüeña tocaba el saxofón detrás del palenque de paja.",
+            "Vivían en aquel entonces en el bajo país los esperantistas del oz, entre los que destacaban loques de moda.",
+            "Los años más gloriosos del Mendoza vibran en nuestras arterias y sangre. Elogiemos la leche del desierto, símbolo de unión, igualdad y progreso.",
+            "¡Bravo el Hospitalejo, equipo campeón, cuidó con solícito afecto al ayo Andrés que es mi tío!",
+            "Un monstruo mordió al sobrino del padre del padre de una prima, una sobrina.",
+            "José Fernández era un jugador, la química funcionó y sus entrenadores le encantaron.",
+            "Vida que hoy gano el Campeonato del Fútbol Argentino. Entrené como loco, estudié en cada posición.",
+            "Muy pocos ajedrecistas juegan y beben. Si ganas, cobra al de enfrente y bébete una copa de champagne.",
+            "Yo conozco al profesor Jorobá que nos enseñó el C. Se emocionó, tuvo una congestión.",
+            "Zulema aventó a Zelda. Vendió en Nueva York a Verónica y me llamó con sonrisa en el rostro.",
+            "Saltaron todos de alegría y agilidad los ratones que subieron a la casa del príncipe.",
+            "Falcone pudo evitar que Mendini traficara. Dice que él nunca permitirá ese mal.",
+            "Jorge apuntó con el cuchillo y arremetió. Al sabio nunca le pega con cachetada.",
+            "Los atletas más grandes no ganan siempre, pero siguen entrenando, que es el espíritu de los deportes.",
+            "Tengo una mujer de fácil belleza y seducción, es como el clima: si cambia se queja.",
+            "Los caballeros en sus carros con galantes competencias corrieron y dejaron el camino transitado.",
+            "Xena la guerrera era feroz, mató al toro con gran furia, de manera poco amable.",
+            "Un señorito fiero como Yi unió al equipo y la defensa la aplastó.",
+            "Vincent con el bastón paseó, le habló a cada criatura del parque con buenas noticias.",
+            "Los seres vivos al menos pueden alimentarse. Ejemplos son animales como ratas, hormigas, murciélagos.",
+            "Xochipilli con la flauta alegraba la noche, bailarinas disfrutaban en la sala, sin una nota en falta.",
+            "En una aldea cercana al lago de Texcoco, hay una vieja de piernas ligeras y corazón agradecido."
+        };
+        
+        try (PrintWriter writer = new PrintWriter("pangramas.txt", "UTF-8")) {
+            for (String pangram : pangramas) {
+                writer.println(pangram);
+            }
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
