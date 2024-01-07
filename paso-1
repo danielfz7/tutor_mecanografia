@@ -1,0 +1,55 @@
+Escribir con rapidez y en forma correcta es una habilidad esencial para trabajar de manera efectiva con las computadoras e Internet. Para esta actividad usted tendrá que crear un repositorio privado en GitHub y añadir como desarrollador del proyecto al docente; y en este deberá subir una aplicación de GUI  en JAVA WEB  que pueda ayudar a los usuarios a aprender a “escribir al tacto” (es decir, escribir correctamente sin ver el teclado). 
+La aplicación deberá mostrar un teclado virtual; similar a como se muestra en la figura, y deberá permitir al usuario ver lo que escribe en la pantalla, sin tener que ver el teclado real. Para ello podrá usar objetos JButton para representar las teclas. A medida que el usuario oprima cada tecla, la aplicación deberá resaltar el objeto JButton correspondiente en la GUI, y agregará el carácter a un objeto JTextArea que mostrará lo que ha escrito el usuario en un momento dado. 
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class TutorApp {
+    private JFrame frame;
+    private JTextField textField;
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    TutorApp window = new TutorApp();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public TutorApp() {
+        initialize();
+    }
+
+    private void initialize() {
+        frame = new JFrame("Tutor");
+        frame.setBounds(100, 100, 800, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(new BorderLayout(0, 0));
+
+        JPanel panel = new JPanel();
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
+        panel.setLayout(new BorderLayout(0, 0));
+
+        textField = new JTextField();
+        panel.add(textField, BorderLayout.NORTH);
+        textField.setColumns(10);
+
+        JButton btn = new JButton("Q");
+        btn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                textField.setText(textField.getText() + "Q");
+            }
+        });
+        panel.add(btn, BorderLayout.WEST);
+
+        frame.getContentPane().add(panel, BorderLayout.CENTER);
+    }
+}
