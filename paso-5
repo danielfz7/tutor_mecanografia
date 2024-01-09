@@ -1,0 +1,45 @@
+ Además de la cuenta de cuáles son las teclas que se le dificultan al usuario.
+
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class PangramasTeclado {
+    public static void main(String[] args) {
+        String fileName = "pangramas.txt";
+        int aciertos = 0;
+        int errores = 0;
+        HashMap<Character, Integer> dificultadTeclas = new HashMap<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Ingrese la palabra pangrama: ");
+                String userInput = scanner.nextLine();
+
+                if (userInput.equalsIgnoreCase(line)) {
+                    aciertos++;
+                } else {
+                    errores++;
+
+                    // Registrar la pulsación de teclas en el HashMap
+                    for (char c : userInput.toCharArray()) {
+                        dificultadTeclas.put(c, dificultadTeclas.getOrDefault(c, 0) + 1);
+                    }
+                }
+            }
+
+            System.out.println("Resultados:");
+            System.out.println("Aciertos: " + aciertos);
+            System.out.println("Errores: " + errores);
+            System.out.println("Dificultad de teclas: " + dificultadTeclas);
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
